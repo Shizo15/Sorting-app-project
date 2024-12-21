@@ -1,1 +1,1 @@
-# Sorting-app-project
+# Semestral project of GUI sorting app
