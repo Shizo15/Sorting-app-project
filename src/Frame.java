@@ -103,7 +103,6 @@ public class Frame extends JFrame {
         bottomPanel.add(generateDataButton);
         bottomPanel.add(sortButton);
 
-
         this.add(topPanel, BorderLayout.NORTH);
         this.add(leftCenterPanel, BorderLayout.WEST);
         this.add(rightCenterPanel, BorderLayout.CENTER);
@@ -137,8 +136,6 @@ public class Frame extends JFrame {
             JOptionPane.showMessageDialog(this, "Dane zostały wygenerowane!");
 
         });
-        //dodać zmianę wartości w comboBoxie zaleznie od danych zawartych w wczytywanym pliku
-        //dodac sortowanie w try catch i zrobić komunikat o niepoprawnie wybranym typie danych
 
         //Wczytaj plik
         loadFileButton.addActionListener(e -> {
@@ -157,27 +154,18 @@ public class Frame extends JFrame {
         });
 
         //Sortuj
-        //tutaj trzeba zrobić tą metodę która rozpozanje typ danych w pliku z którego importujemy dane
-        //tutaj trzeba też zrobić automatyczną zmianę opcji w comboboxie z wyborem typu danych
-        // 0 int, 1 double, 2 string
-        //dataTypeComboBox.setSelectedItem(dataTypes[0]);
 
         //pobieramy pierwszą linię
         //robimy try catch sprawdzjąc kolejno czy int, jak nie to czy double, jak nie to na pewno string
-
 
         sortButton.addActionListener(e -> {
             if(dataArea.getText().isEmpty()){
                 JOptionPane.showMessageDialog(this, "Brak danych do posortowania!");
             }
 
-            //
             try{
-                System.out.println("Blok 1");
                 String text = dataArea.getText();
-                System.out.println(text);
                 String firstValue = text.split("\n")[0];
-                System.out.println("Pierwsza wartość: "+firstValue);
 
                 if(tryParseInt(firstValue)){
                     dataTypeComboBox.setSelectedItem(dataTypes[0]);
@@ -192,7 +180,6 @@ public class Frame extends JFrame {
             catch (NumberFormatException ex){
                 JOptionPane.showMessageDialog(this,"Coś dziwnego się stało z formatem danych");
             }
-            //
 
             String type = (String) dataTypeComboBox.getSelectedItem();
             if(type.equals("Liczby całkowite")){
@@ -248,33 +235,26 @@ public class Frame extends JFrame {
                     JOptionPane.showMessageDialog(this, "Wybrano nieprawidłowy typ danych!");
                 }
             }
-
-
         });
 
-
         //Zapisz do pliku - o podanej nazwie
-
-        //ewentulanie rozdzielać zpisywanie posortowanych danych i zmieniać pod tym względem nazwę zpisywanego pliku
 
         saveToFileButton.addActionListener(e -> {
             if(fileField.getText().isEmpty()){
                 JOptionPane.showMessageDialog(this,"Brak danych do zapisania!");
             }
-            try(BufferedWriter bw = new BufferedWriter(new FileWriter("sorted_"+fileField.getText()+".txt"))){
+            try(BufferedWriter bw = new BufferedWriter(new FileWriter("sorted_"+fileField.getText()))){
                 for (String s : data) {
                     bw.write(s);
                     bw.newLine();
                 }
-                JOptionPane.showMessageDialog(this, "Dane zostały zapisane do pliku sorted_"+fileField.getText()+".txt!");
+                JOptionPane.showMessageDialog(this, "Dane zostały zapisane do pliku sorted_"+fileField.getText());
             }catch (IOException ex) {
                 JOptionPane.showMessageDialog(this, "Błąd podczas zapisu do pliku: " + ex.getMessage());
             }
         });
-
-
-
     }
+
     //Metoda generująca losowe ciągi znaków
     public String generateRandomString(Random random, int length) {
         String characters = "abcdefghijklmnopqrstuvwxyz";
@@ -284,6 +264,7 @@ public class Frame extends JFrame {
         }
         return sb.toString();
     }
+
     //robimy metode generyczną albo przeciążone werjsie tej samej metody z innym typem wejścia
     public <T extends Comparable<T>>void bubbleSortGeneric(List<T> list) {
         int n = list.size();
@@ -310,6 +291,7 @@ public class Frame extends JFrame {
             list.set(j + 1, temp);
         }
     }
+
     //Własne wersje metod tryParse z C# bo w Javie nie widze czegoś takiego
     public static boolean tryParseInt(String input){
      try {
