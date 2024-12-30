@@ -4,9 +4,9 @@
 This application provides a simple graphical user interface (GUI) for working with datasets. You can load, generate, sort, and save data effortlessly. It supports integers, floating-point numbers, and strings, with built-in sorting algorithms and data validation.
 
 ---
-<img src="https://github.com/user-attachments/assets/2d0c2511-95c6-41e6-b4aa-82c215a424c2" alt="sortingapp1" width="500">
+<img src="https://github.com/user-attachments/assets/2d0c2511-95c6-41e6-b4aa-82c215a424c2" alt="sortingapp1" width="600">
 
-<img src="https://github.com/user-attachments/assets/3edbed57-a87c-4422-a8b1-0f9996604340" alt="sortingapp2" width="500">
+<img src="https://github.com/user-attachments/assets/3edbed57-a87c-4422-a8b1-0f9996604340" alt="sortingapp2" width="600">
 
 
 ## Features
